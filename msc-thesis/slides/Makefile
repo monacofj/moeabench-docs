@@ -1,5 +1,5 @@
 TEX=main.tex
-SRC=sections/phase2.tex theme/academic.tex
+SRC=sections/phase2.tex sections/phase3a.tex theme/academic.tex
 FIGURES=$(wildcard figures/*.pdf)
 
 .PHONY: all clean

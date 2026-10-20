@@ -1,5 +1,5 @@
 TEX=main.tex
-SRC=sections/phase2.tex sections/phase3a.tex theme/academic.tex
+SRC=sections/phase2.tex sections/phase3a.tex $(wildcard sections/phase3b-*.tex) theme/academic.tex
 FIGURES=$(wildcard figures/*.pdf)
 ENCODED=$(wildcard figures/*.pdf.b64)
 RESTORED=$(patsubst %.b64,%,$(ENCODED)) figures/example_04_05_topology.pdf

@@ -150,7 +150,7 @@ mb.view.history(exp)
 \end{tikzpicture}
 \end{column}
 \begin{column}{.50\textwidth}
-\begin{lstlisting}[style=python,basicstyle=\ttfamily\fontsize{8}{10}\selectfont]
+\begin{lstlisting}[style=python,basicstyle=\ttfamily\fontsize{7.4}{9.3}\selectfont]
 exp.report()  # protocolo e metadados
 
 # Solucoes nao dominadas:
@@ -194,7 +194,7 @@ exp.run(repeat=3)
 exp.seed     # [42, 43, 44]
 exp[0].seed # 42
 exp[0].component_seeds
-# {'nsga3.reference_directions': 7}
+# sementes dos componentes
 \end{lstlisting}
 \end{column}
 \begin{column}{.46\textwidth}
@@ -213,7 +213,7 @@ Assim, o uso de aleatoriedade por um componente auxiliar não consome inadvertid
 \begin{lstlisting}[style=python,basicstyle=\ttfamily\fontsize{8}{10}\selectfont]
 versions = mb.system.verify_version()
 stability = mb.system.verify_stability()
-comparison = mb.system.verify_experiment(exp)
+mb.system.verify_experiment(exp)
 \end{lstlisting}
 \end{column}
 \begin{column}{.52\textwidth}

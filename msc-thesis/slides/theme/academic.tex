@@ -1,0 +1,22 @@
+\usepackage[brazil]{babel}
+\usepackage{fontspec}
+\IfFontExistsTF{Nunito}{\setsansfont{Nunito}}{\setsansfont{Noto Sans}}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{navy}{RGB}{35,62,82}
+\definecolor{pale}{RGB}{245,247,248}
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamerfont{normal text}{size=\fontsize{9.2}{12.5}\selectfont}
+\AtBeginDocument{\usebeamerfont{normal text}}
+\setbeamercolor{frametitle}{fg=navy,bg=white}
+\setbeamercolor{title}{fg=navy,bg=white}
+\setbeamercolor{structure}{fg=navy}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{frametitle}{\vspace{.28cm}\insertframetitle\par\vspace{.15cm}\textcolor{navy!35}{\rule{\linewidth}{.45pt}}}
+\setbeamertemplate{footline}{\hfill\scriptsize\insertframenumber\hspace{.5cm}\vspace{.18cm}}
+\setbeamertemplate{itemize items}[circle]
+\setlength{\parskip}{6pt}
+\lstdefinestyle{python}{language=Python,basicstyle=\ttfamily\scriptsize,backgroundcolor=\color{pale},keywordstyle=\color{navy}\bfseries,showstringspaces=false,columns=fullflexible,keepspaces=true,frame=single,rulecolor=\color{black!13},xleftmargin=5pt,xrightmargin=5pt,aboveskip=5pt,belowskip=5pt}

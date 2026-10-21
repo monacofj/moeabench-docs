@@ -1,23 +1,40 @@
-# Apresentação de mestrado — MoeaBench
+# MoeaBench — apresentação de mestrado
 
-Apresentação em LaTeX Beamer da dissertação de Fernando Ferreira da Silva, ICMC-USP.
+Apresentação em LaTeX Beamer da dissertação de Fernando Ferreira da Silva (ICMC-USP).
 
-## Estado
+## Estado atual
 
-A versão parcial compilável contém **33 slides**: 25 da Introdução e Visão Geral (Fase 2) e oito do primeiro lote de exemplos convencionais (Fase 3A, incluindo o divisório). Os exemplos 5–14, as métricas FAIR e a conclusão serão trabalhados em fases posteriores.
+A **revisão parcial até a Fase 4** contém **76 slides**:
+
+- Fase 2: Introdução e visão geral do MoeaBench.
+- Fase 3: 14 exemplos convencionais, código, resultados e figuras vetoriais originais.
+- Fase 4: fundamentos das seis métricas FAIR e dos Q-scores, com diagramas esquemáticos reproduzíveis em TikZ.
+
+**A Fase 5** (exemplos clínicos, comparações entre diagnósticos e radares reais) **e a Fase 6** (conclusões e verificação integral) ainda serão desenvolvidas. O PDF entregue agora não é a versão final de defesa.
 
 ## Compilação
 
-Execute `make` dentro de `msc-thesis/slides`, com LuaLaTeX e latexmk. O resultado é `presentation.pdf`. O tema utiliza Nunito quando disponível e Noto Sans como alternativa.
+Dentro de `msc-thesis/slides/`, execute:
 
-As figuras são os PDFs vetoriais originais de `mb-uso/figuras/`, nunca recortes de páginas. Alguns arquivos estão armazenados como `.pdf.b64` e outros em partes devido a limitações de transferência; o `Makefile` restaura os PDFs originais automaticamente. Na compilação, os bytes reconstituídos foram conferidos com os arquivos originais.
+```bash
+make
+```
 
-## Proveniência e revisão
+Requer `latexmk`, `lualatex`, pacotes Beamer e `fontspec` e uma instalação da fonte **Noto Sans**. A apresentação usa Noto Sans deliberadamente porque Nunito não está instalada no ambiente de referência. O PDF compilado é `presentation.pdf`.
 
-Os quatro exemplos iniciais seguem `mb-uso/secoes/exemplo_01.tex` a `exemplo_04.tex` (capítulo 5 da monografia). Seus resultados foram transcritos dos fontes, sem novas execuções dos algoritmos.
+As figuras dos exemplos anteriores são PDFs vetoriais originais recuperados das fontes da monografia, não recortes de páginas. Alguns recursos trazem também arquivos `.pdf.b64` ou `.part*` para permitir sua restauração automática por `make`.
 
-Consulte `docs/phase-3a-review.md` e `docs/review-issues.md` para a correspondência dos resultados e pendências.
+Os diagramas de FAIR foram desenhados especialmente para a apresentação e **não representam medições obtidas experimentalmente**. Excertos de código foram retirados dos exemplos existentes ou da documentação; a Fase 4 é uma exposição conceitual, não uma nova campanha de experimentos.
+
+## Estrutura e revisão
+
+- `main.tex` inclui sequencialmente as seções aprovadas.
+- `sections/phase4.tex` é a nova seção de fundamentação FAIR.
+- `theme/academic.tex` concentra a tipografia e o estilo.
+- `docs/phase4-review.md` documenta escopo, escolhas didáticas e verificação.
+- `docs/phase3-completion.md` registra os exemplos da Fase 3.
+- `sources/mb-uso/` guarda os trechos originais usados na revisão dos exemplos convencionais.
 
 ## Licenças
 
-Planejamento: fontes da apresentação CC BY-SA 4.0; PDF final CC BY 4.0; scripts GPL-3.0-or-later. A autorização de reutilização das figuras acadêmicas deve ser verificada separadamente. O licenciamento da dissertação depositada na USP é independente deste projeto.
+Licenças **planejadas** para publicação, ainda sujeitas a conferência dos direitos relativos às figuras e materiais da dissertação: fontes dos slides CC BY-SA 4.0; PDF final CC BY 4.0; scripts de construção GPL-3.0-or-later. Os termos do exemplar depositado na USP são independentes dos materiais desta apresentação.

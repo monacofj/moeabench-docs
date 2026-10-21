@@ -1,6 +1,7 @@
 \usepackage[brazil]{babel}
 \usepackage{fontspec}
-\IfFontExistsTF{Nunito}{\setsansfont{Nunito}}{\setsansfont{Noto Sans}}
+% Sans-serif de disponibilidade ampla, sem dependência da Nunito.
+\setsansfont{Noto Sans}
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{tikz}
@@ -9,6 +10,7 @@
 \definecolor{navy}{RGB}{35,62,82}
 \definecolor{pale}{RGB}{245,247,248}
 \setbeamercolor{normal text}{fg=black,bg=white}
+% Corpo de texto um pouco menor, com entrelinha mais arejada.
 \setbeamerfont{normal text}{size=\fontsize{9.2}{12.5}\selectfont}
 \AtBeginDocument{\usebeamerfont{normal text}}
 \setbeamercolor{frametitle}{fg=navy,bg=white}

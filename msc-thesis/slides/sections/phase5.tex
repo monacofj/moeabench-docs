@@ -277,16 +277,13 @@ resultado.report()
 \item Cada problema possui sua própria calibração. Comparações quantitativas são mais apropriadas \textbf{dentro do mesmo MOP} e protocolo.
 \item O relatório atribui \textbf{orçamentos de gerações distintos} a determinados algoritmos; logo, diferenças entre eles não devem ser interpretadas como evidência isolada de superioridade em orçamento igual.
 \end{itemize}
-\vspace{.20cm}
-\textbf{Pergunta:} o que muda quando observamos separadamente as seis dimensões em vez de resumir o desempenho por HV, GD ou IGD?
-\par\medskip
-{\scriptsize Fonte: github.com/monacofj/moeabench/blob/main/calibration/audit\_report.html (v0.14.0).}
+
 \end{frame}
 
 \begin{frame}{Auditoria v0.14.0 — DTLZ2: proximidade similar, regularidade distinta}
 \begin{columns}[T,onlytextwidth]
 \begin{column}{.66\textwidth}\centering
-\includegraphics[width=\linewidth,height=.67\textheight,keepaspectratio]{figures/audit_dtlz2_qscores.pdf}
+\includegraphics[width=\linewidth,height=.56\textheight,keepaspectratio]{figures/audit_dtlz2_qscores.pdf}
 \end{column}
 \begin{column}{.32\textwidth}
 \textbf{Closeness}\par
@@ -301,13 +298,13 @@ NSGA-III: \textbf{0,019}
 \end{column}
 \end{columns}
 \vspace{.04cm}\textbf{Interpretação:} todos se aproximaram do GT, mas a distribuição dos espaçamentos locais é muito mais favorável no resultado do NSGA-II. A avaliação de \emph{closeness} isolada esconderia esse contraste.
-\par{\scriptsize Dados do relatório v0.14.0, DTLZ2 ($M=3$); configurações e gerações não são idênticas.}
+
 \end{frame}
 
 \begin{frame}{Auditoria v0.14.0 — DPF1: convergência não basta}
 \begin{columns}[T,onlytextwidth]
 \begin{column}{.66\textwidth}\centering
-\includegraphics[width=\linewidth,height=.67\textheight,keepaspectratio]{figures/audit_dpf1_qscores.pdf}
+\includegraphics[width=\linewidth,height=.58\textheight,keepaspectratio]{figures/audit_dpf1_qscores.pdf}
 \end{column}
 \begin{column}{.32\textwidth}
 \textbf{MOEA/D:}\par
@@ -322,13 +319,13 @@ Balance 0,960
 \end{column}
 \end{columns}
 \vspace{.04cm}\textbf{Interpretação:} o MOEA/D apresenta convergência favorável, mas forte desequilíbrio regional e problemas de continuidade. O NSGA-II recebeu avaliações mais favoráveis para essas propriedades \emph{neste protocolo específico}.
-\par{\scriptsize Relatório v0.14.0, DPF1 ($M=3$). ``Continuidade'' é o nome adotado no relatório para a dimensão relacionada a gap. Orçamentos de gerações distintos.}
+
 \end{frame}
 
 \begin{frame}{Auditoria v0.14.0 — DTLZ1: concordância em convergência, divergência estrutural}
 \begin{columns}[T,onlytextwidth]
 \begin{column}{.66\textwidth}\centering
-\includegraphics[width=\linewidth,height=.66\textheight,keepaspectratio]{figures/audit_dtlz1_qscores.pdf}
+\includegraphics[width=\linewidth,height=.56\textheight,keepaspectratio]{figures/audit_dtlz1_qscores.pdf}
 \end{column}
 \begin{column}{.32\textwidth}
 \textbf{Balance}\par
@@ -341,7 +338,7 @@ Todos: 0,951--0,961
 \end{column}
 \end{columns}
 \vspace{.04cm}\textbf{Interpretação:} um progresso longitudinal semelhante convive com diferenças expressivas na ocupação regional. Headway responde \emph{quanto se progrediu}; balance, \emph{onde ficaram distribuídas as alternativas}.
-\par{\scriptsize Dados do relatório v0.14.0, DTLZ1 ($M=3$); não confundir com a execução isolada do exemplo 13.}
+
 \end{frame}
 
 \begin{frame}{O que as análises clínicas acrescentaram aos experimentos?}

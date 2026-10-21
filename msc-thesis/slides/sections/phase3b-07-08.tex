@@ -13,20 +13,20 @@ s09 = mb.stats.attainment(
     exp1, level=0.9)
 mb.view.topology(s01,s05,s09)
 \end{lstlisting}
-\textbf{Leitura:} 10\%, 50\% e 90\% expressam frequências de atingimento, não porcentagens de HV.
+
 \end{column}
 \begin{column}{.59\textwidth}
-\centering\includegraphics[width=\linewidth,height=.55\textheight,keepaspectratio]{figures/example_07_01_topology.pdf}
+\centering\includegraphics[width=\linewidth,height=.44\textheight,keepaspectratio]{figures/example_07_01_topology.pdf}
 \par{\scriptsize Figura original: curva do nível de 90\%; a API também produz 10\% e 50\%.}
 \end{column}
 \end{columns}
-\vspace{.04cm}\textbf{Intuição:} regiões atingidas em nove de dez execuções são mais confiáveis que regiões atingidas apenas uma vez. A distância entre superfícies caracteriza variabilidade espacial.
+\vspace{.01cm}\textbf{Intuição:} 10\%, 50\% e 90\% são frequências de atingimento, não porcentagens de HV. Regiões atingidas em nove de dez execuções são mais regulares que as atingidas apenas uma vez.
 \end{frame}
 
 \begin{frame}[fragile]{Exemplo 7 — Comparar a superfície mediana de dois MOEAs}
 \begin{columns}[T,onlytextwidth]
 \begin{column}{.61\textwidth}
-\centering\includegraphics[width=\linewidth,height=.63\textheight,keepaspectratio]{figures/example_07_02_topology.pdf}
+\centering\includegraphics[width=\linewidth,height=.49\textheight,keepaspectratio]{figures/example_07_02_topology.pdf}
 \end{column}
 \begin{column}{.37\textwidth}
 \begin{lstlisting}[style=python,basicstyle=\ttfamily\fontsize{7.4}{9.2}\selectfont]
@@ -139,3 +139,4 @@ A análise constrói \textbf{sete ranks globais}.
 \end{columns}
 \vspace{.04cm}\textbf{Interpretação:} quando as soluções dos dois MOEAs são reunidas e a dominância é recalculada, SPEA2 ocupa a grande maioria das posições no rank 1. Isso é distinto dos ranks calculados isoladamente.
 \end{frame}
+

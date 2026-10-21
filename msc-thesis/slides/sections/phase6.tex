@@ -1,0 +1,161 @@
+% Fase 6 — conclusões, limitações e trabalhos futuros.
+% Base textual: monografia de Fernando Ferreira da Silva, cap. 7, pp. 131--133.
+% Não se afirma validação experimental adicional às execuções descritas na dissertação.
+\setlength{\parskip}{4pt}
+
+\begin{frame}[plain]
+\vspace*{1.84cm}
+{\LARGE\color{navy}Síntese conclusiva\par}
+\vspace{.25cm}
+{\large Contribuições, limitações e perspectivas\par}
+\vspace{.30cm}
+\textcolor{navy!40}{\rule{.76\linewidth}{.6pt}}\par
+\vspace{.22cm}
+O que o MoeaBench organiza, o que os experimentos evidenciam e quais questões permanecem abertas.
+\end{frame}
+
+\begin{frame}{A contribuição principal: uma infraestrutura de avaliação}
+\textbf{O trabalho não propõe um novo algoritmo evolutivo multiobjetivo.}
+\par\medskip
+A contribuição é integrar, em um fluxo experimental comum, decisões e evidências que muitas vezes ficam dispersas entre scripts e ferramentas.
+\vspace{.22cm}
+\begin{center}
+\begin{tikzpicture}[>=Latex, every node/.style={font=\fontsize{8.5}{10.6}\selectfont}, node distance=.25cm]
+\node[draw=navy!65,rounded corners=2pt,fill=pale,minimum width=2.25cm,minimum height=.95cm,align=center] (a) {Problema e\\algoritmo};
+\node[draw=navy!65,rounded corners=2pt,fill=pale,minimum width=2.25cm,minimum height=.95cm,align=center,right=.34cm of a] (b) {Protocolo e\\execuções};
+\node[draw=navy!65,rounded corners=2pt,fill=pale,minimum width=2.25cm,minimum height=.95cm,align=center,right=.34cm of b] (c) {Métricas e\\estatística};
+\node[draw=navy!65,rounded corners=2pt,fill=pale,minimum width=2.25cm,minimum height=.95cm,align=center,right=.34cm of c] (d) {Relatórios e\\diagnósticos};
+\draw[->,thick,navy!80] (a)--(b);
+\draw[->,thick,navy!80] (b)--(c);
+\draw[->,thick,navy!80] (c)--(d);
+\end{tikzpicture}
+\end{center}
+\vspace{.15cm}
+\begin{itemize}\setlength\itemsep{4pt}
+\item O \textbf{experimento} preserva configurações, sementes, populações, histórico e metadados.
+\item A API permite examinar resultados por \textbf{execução, geração, dominância e espaço} (decisões ou objetivos).
+\item Persistência, visualização e relatórios viabilizam \textbf{reanálise} sem repetir a otimização.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{O que os exemplos efetivamente mostraram?}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.48\textwidth}
+\textbf{Comparações entre MOEAs}\par\smallskip
+NSGA-III e SPEA2 alcançaram valores finais próximos de HV em DTLZ2, apesar de trajetórias diferentes.
+\par\bigskip
+\textbf{Variabilidade estocástica}\par\smallskip
+Cinco execuções produziram HV final estável, mas frentes com distribuições espaciais distintas.
+\end{column}
+\begin{column}{.48\textwidth}
+\textbf{Normalização}\par\smallskip
+Alterar a referência inverteu o ranking de HV bruto entre populações de 20 e 100 indivíduos.
+\par\bigskip
+\textbf{Estrutura FAIR}\par\smallskip
+Em DTLZ1, \emph{closeness} $=0{,}883$ e \emph{headway} $=0{,}999$ coexistiram com quatro Q-scores nulos.
+\end{column}
+\end{columns}
+\vspace{.26cm}
+\textbf{Síntese:} bom desempenho em uma dimensão não assegura cobertura, organização espacial ou estabilidade em outras.
+\end{frame}
+
+\begin{frame}{Comparabilidade exige protocolo e referência explícitos}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.48\textwidth}
+\textbf{O que preservar}\par\smallskip
+\begin{itemize}\setlength\itemsep{4pt}
+\item Problema, número de objetivos e orçamento de avaliações.
+\item Configuração do MOEA e sementes independentes.
+\item Execuções repetidas e dispersão dos indicadores.
+\item Ground truth, normalização e calibração dos Q-scores.
+\end{itemize}
+\end{column}
+\begin{column}{.49\textwidth}
+\textbf{O que não concluir}\par\smallskip
+\begin{itemize}\setlength\itemsep{4pt}
+\item Um vencedor \emph{universal} entre algoritmos.
+\item Equivalência entre métricas físicas e Q-scores.
+\item Superioridade causal com orçamentos experimentais distintos.
+\item Boa cobertura apenas porque as soluções são não dominadas.
+\end{itemize}
+\end{column}
+\end{columns}
+\vspace{.10cm}
+\textbf{Papel do MoeaBench:} tornar as evidências rastreáveis e interpretáveis, \emph{não} substituir o julgamento científico do pesquisador.
+\end{frame}
+
+\begin{frame}{Limitação de engenharia: paralelismo e memória}
+\textbf{O problema observado:} paralelizar múltiplas execuções por threads Python não trouxe ganho relevante em tarefas intensivas de CPU.
+\vspace{.25cm}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.47\textwidth}
+\textbf{Threads Python}\par\smallskip
+No CPython convencional, o \emph{Global Interpreter Lock} (GIL) limita a execução simultânea de código Python intensivo de CPU. As tarefas se alternam, sem acelerar proporcionalmente o cálculo.
+\end{column}
+\begin{column}{.49\textwidth}
+\textbf{Processos independentes}\par\smallskip
+Contornam essa restrição, mas tendem a duplicar bibliotecas, estados e dados, elevando o consumo de memória. A máquina pode esgotar a RAM.
+\end{column}
+\end{columns}
+\vspace{.32cm}
+\textbf{Decisão atual:} priorizar execução serial previsível em vez de paralelismo com custo elevado de memória.
+\par\medskip
+\textbf{Perspectiva:} portar rotinas críticas para C ou extensões nativas capazes de liberar o GIL quando apropriado, examinando compilação, portabilidade e manutenção.
+\end{frame}
+
+\begin{frame}{Limitações e perguntas metodológicas em aberto}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.49\textwidth}
+\textbf{Resolução e referência}\par\smallskip
+\begin{itemize}\setlength\itemsep{5pt}
+\item As frentes são amostradas por conjuntos \emph{finitos}.
+\item Métricas de distância e calibrações dependem do GT e de sua distribuição.
+\item Q-scores são relativos aos respectivos baselines, não uma garantia universal de qualidade.
+\end{itemize}
+\end{column}
+\begin{column}{.49\textwidth}
+\textbf{Generalização do diagnóstico}\par\smallskip
+\begin{itemize}\setlength\itemsep{5pt}
+\item Ampliar a validação para mais MOPs, MOEAs e cardinalidades.
+\item Examinar frentes desconectadas ou degeneradas.
+\item Quantificar a sensibilidade às amostragens e a incerteza dos escores.
+\end{itemize}
+\end{column}
+\end{columns}
+\vspace{.16cm}
+\textbf{Consequência:} FAIR oferece evidências multidimensionais, mas a confiabilidade dessas evidências também precisa ser estudada experimentalmente.
+\end{frame}
+
+\begin{frame}{Perspectivas de continuidade}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.48\textwidth}
+\textbf{Validação experimental}\par\smallskip
+Ampliar baterias de MOEAs e MOPs, com diferentes objetivos, orçamentos e repetições.
+\par\bigskip
+\textbf{Calibração FAIR}\par\smallskip
+Investigar a sensibilidade à densidade do GT, aos baselines e à geometria das frentes.
+\end{column}
+\begin{column}{.48\textwidth}
+\textbf{Incerteza diagnóstica}\par\smallskip
+Quantificar a confiança nos Q-scores e comunicar casos de evidência insuficiente.
+\par\bigskip
+\textbf{Engenharia}\par\smallskip
+Estudar paralelismo por componentes nativos, sob restrições de memória e portabilidade.
+\end{column}
+\end{columns}
+\vspace{.24cm}
+\textbf{Prioridade científica:} testar a consistência das conclusões quando mudam a amostragem, o problema e o protocolo.
+\end{frame}
+
+\begin{frame}{Mensagem final}
+\vspace{.31cm}
+{\large\color{navy}\textbf{Avaliar um MOEA exige mais que executar um algoritmo e consultar uma métrica.}\par}
+\vspace{.39cm}
+O MoeaBench reúne \textbf{protocolo, execuções, histórico, referências, métricas, estatística, visualização e diagnósticos} em um fluxo rastreável.
+\par\medskip
+As métricas FAIR acrescentam uma leitura da \textbf{estrutura da frente resultante}: proximidade, cobertura, lacunas, regularidade, equilíbrio e progresso podem contar histórias diferentes sobre a mesma busca.
+\vspace{.37cm}
+\textcolor{navy!45}{\rule{\linewidth}{.6pt}}
+\par\vspace{.19cm}
+\textbf{Contribuição central:} aproximar implementação computacional e rigor metodológico para avaliações de MOEAs mais transparentes, reproduzíveis e cientificamente auditáveis.
+\end{frame}
